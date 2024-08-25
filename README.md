@@ -10,7 +10,7 @@ The provided YAML file is a Kubernetes Deployment configuration. This deployment
 
 - **apiVersion**: `apps/v1` - Specifies the API version used for the Deployment.
 - **kind**: `Deployment` - Indicates that this YAML file defines a Kubernetes Deployment.
-- **metadata**: Contains metadata for the deployment, including the name (`openbook-cranker-v2-test`) and namespace (`production`).
+- **metadata**: Contains metadata for the deployment, including the name (`openbook-cranker-v2.0.1`) and namespace (`production`).
 - **spec**:
   - **replicas**: Set to `1`, indicating that only one replica of the pod will be running.
   - **selector**: Matches the label `app: openbook-cranker` to identify the pod.
