@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: openbook-cranker-v2-test
+  name: openbook-cranker-v2.0.1
   namespace: production
   labels:
     app: openbook-cranker
