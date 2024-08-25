@@ -31,3 +31,24 @@ To deploy this configuration to your Kubernetes cluster, use the following comma
 
 ```bash
 kubectl apply -f openbook-cranker-v2-deployment.yaml
+```
+
+Make sure you have the required Secrets (`keypair` and `rpc-url-1`) configured in the `production` namespace before deploying.
+
+## Environment Variables
+
+The deployment includes a variety of environment variables:
+
+- **KEYPAIR**: Securely stored in a Kubernetes Secret.
+- **RPC_URL**: Securely stored in a Kubernetes Secret.
+- **PROGRAM_ID**: The program ID for the application.
+- **INTERVAL**: The interval time for processing.
+- **CONSUME_EVENTS_LIMIT**: Limit for consuming events.
+- **CLUSTER**: Specifies the cluster environment, e.g., `mainnet`.
+- **MARKETS**: A list of markets the application interacts with.
+- **PRIORITY_MARKETS**: A list of priority markets.
+- **PRIORITY_QUEUE_LIMIT**: Limit for the priority queue.
+- **PRIORITY_CU_PRICE**: The cost unit price for priority transactions.
+- **PRIORITY_CU_LIMIT**: The limit for priority cost units.
+- **MAX_TX_INSTRUCTIONS**: The maximum number of instructions per transaction.
+- **CU_PRICE**: The cost unit price for standard transactions.
