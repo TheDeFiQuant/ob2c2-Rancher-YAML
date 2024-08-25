@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openbook-cranker-v2-test
+  namespace: testing
+  labels:
+    app: openbook-cranker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openbook-cranker
+  template:
+    metadata:
+      labels:
+        app: openbook-cranker
+    spec:
+      containers:
+      - name: openbook-cranker
+        image: ghcr.io/thedefiquant/openbook-cranker-v2:v2.0.1
+        env:
+        - name: KEYPAIR
+          valueFrom:
+            secretKeyRef:
+              name: keypair
+              key: KEYPAIR
+        - name: RPC_URL
+          valueFrom:
+            secretKeyRef:
+              name: rpc-url-1
+              key: RPC_URL
+        - name: PROGRAM_ID
+          value: "opnb2LAfJYbRMAHHvqjCwQxanZn7ReEHp1k81EohpZb"
+        - name: INTERVAL
+          value: "500"
+        - name: CONSUME_EVENTS_LIMIT
+          value: "19"
+        - name: CLUSTER
+          value: "mainnet"
+        - name: MARKETS
+          value: "CwGmEwYFo7u5D7vghGwtcCbRToWosytaZa3Ys3JAto6J,G4AGsrzHQWrPRELJdyr8CrWbA3PjvtGDVqMQhZcoaarr,49ZdaHibpLQyzAQ3tgfse5cn3zonz9CiuUq1BWfnNQyx,Gudvr1FPgxKfnMoEEBXDgXWzmoavTY7nGC9TcdM4s3SP,3Wn4C1dG8syRBnxsvnFWQH9LnJcs8E7NNDaVxNQDa4vv,5HzwRJ4WTYY4WtnL6m3qNBfuVR2nqyP9AAYX2HyJAjca,AT1R2jUNb9iTo4EaRfKSTPiNTX4Jb64KSwnVmig6Hu4t,Dz1qgT3CFj1rDJiDDtCFMyWspHgAi5e9f4Uyuze8Xwvk,8DoM6mRHre5gZKuBgWNiT6zqTztoyw6NyErWfJ9b1fZz,3jegW9AhEDoSzDmGTR2TewodfmVQNufNFQwxa5jcQNuU,C6VnfsciJL99JTFcC2vb2R5x7jC94ra7Hfjb37FBa9pa,6yVMLY3R2XVNCcF9DNsFRdm9bCWYajkgErVsuPSmKm9w,8Y1ECrzZsqoEpj5V6egVV6oRhxt9XbACiJoGHGE9hGCP,4kX4hd2a4mz8yzipnEfaxq9AzJy7A6D3UdVdw7m5arHG,6V5s1NFJpegEVWENoS22hFyfBM4S4syxFkrayiN4RrHM,3w9Z8FPRuSTbrGQLPhRDEQzSRYyhXzuiqmFVaku5Rjb2,AGDo8wd1Dfxar4AoRZQeqHPsDw9qTLW5GEcN3p1WweDn,GVyg8AFanApGsuMSSstVjQZw5HeyJUCJ73bAy4YkkCNT,7WY1yAS1VdMGWBhrD73GaFpiWfvzvdpqX9TaXTrVeWN2,GcRcSAMcLFo3nsaW8DUe4h58PNnQrBfQ9VcbDhqGVLgJ,B4AYAxJfW2mGVm8B9rWc34isxWeTrMLtMFZFR4QwwjuZ,AFgkED1FUVfBe2trPUDqSqK9QKd4stJrfzq5q1RwAFTa,D3gZwng2MgZGjktYcKpbR8Bz8653i4qCgzHCf5E4TcZb,3kg9FUEWgMMvMA5tg6sA7wJ4NsNQnDruhbqPstDWUe21,8DoM6mRHre5gZKuBgWNiT6zqTztoyw6NyErWfJ9b1fZz,3jegW9AhEDoSzDmGTR2TewodfmVQNufNFQwxa5jcQNuU,C6VnfsciJL99JTFcC2vb2R5x7jC94ra7Hfjb37FBa9pa,6yVMLY3R2XVNCcF9DNsFRdm9bCWYajkgErVsuPSmKm9w,8Y1ECrzZsqoEpj5V6egVV6oRhxt9XbACiJoGHGE9hGCP,4kX4hd2a4mz8yzipnEfaxq9AzJy7A6D3UdVdw7m5arHG"
+        - name: PRIORITY_MARKETS
+          value: "B4AYAxJfW2mGVm8B9rWc34isxWeTrMLtMFZFR4QwwjuZ,AFgkED1FUVfBe2trPUDqSqK9QKd4stJrfzq5q1RwAFTa,D3gZwng2MgZGjktYcKpbR8Bz8653i4qCgzHCf5E4TcZb,3kg9FUEWgMMvMA5tg6sA7wJ4NsNQnDruhbqPstDWUe21,8DoM6mRHre5gZKuBgWNiT6zqTztoyw6NyErWfJ9b1fZz,3jegW9AhEDoSzDmGTR2TewodfmVQNufNFQwxa5jcQNuU,C6VnfsciJL99JTFcC2vb2R5x7jC94ra7Hfjb37FBa9pa,6yVMLY3R2XVNCcF9DNsFRdm9bCWYajkgErVsuPSmKm9w,8Y1ECrzZsqoEpj5V6egVV6oRhxt9XbACiJoGHGE9hGCP,4kX4hd2a4mz8yzipnEfaxq9AzJy7A6D3UdVdw7m5arHG"
+        - name: PRIORITY_QUEUE_LIMIT
+          value: "100"
+        - name: PRIORITY_CU_PRICE
+          value: "50003"
+        - name: PRIORITY_CU_LIMIT
+          value: "50000"
+        - name: MAX_TX_INSTRUCTIONS
+          value: "1"
+        - name: CU_PRICE
+          value: "0"
+        ports:
+        - containerPort: 80
